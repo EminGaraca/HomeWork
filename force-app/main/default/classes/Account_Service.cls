@@ -10,9 +10,12 @@ public with sharing class Account_Service {
     }
     public void updateAccount(String Phone) {
         Account_Selector accSel = new Account_Selector();
-        accSel.fetchAccountNameByPhone(Phone);
-        accSel.Name = 'DML Test';
-        update accSel;
+        List<Account>listacc=accSel.fetchAccountNameByPhone(Phone);
+        for( Account a : listacc) {
+        a.Name = 'DML Test';
+        }
+        
+        update listacc;
 
     }
 }
